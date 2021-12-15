@@ -14,8 +14,8 @@ namespace FuelCalculator
         public double lapTime = 0, maxFuel = 0, usage = 0, extraLaps = 0;
         public bool lapRace = false;
 
-        public int numStops = 0;
-        public double lapsPerTank = 0, totalFuel = 0, lastStopFuel = 0;
+        public int numStops = 0, lapsPerTank = 0;
+        public double totalFuel = 0, lastStopFuel = 0;
 
 
         /**
@@ -46,8 +46,6 @@ namespace FuelCalculator
 
             lapTime = mins*60 + secs + tenths;
 
-            Debug.WriteLine(lapTime);
-
             return true;
         }
 
@@ -69,11 +67,11 @@ namespace FuelCalculator
                 raceLaps = (int)Math.Ceiling((raceTime * 60) / lapTime);
             }
 
-            lapsPerTank = maxFuel / usage;
+            lapsPerTank = (int)Math.Floor(maxFuel / usage);
             totalFuel = usage * (raceLaps + extraLaps + 0.25 * paceLap);
-            numStops = (int)Math.Ceiling((totalFuel - maxFuel) / maxFuel);
+            
+            numStops = (int)Math.Ceiling((totalFuel-maxFuel) / maxFuel);
             lastStopFuel = numStops != 0 ? totalFuel - numStops * maxFuel : 0;
-
 
             return true;
         }

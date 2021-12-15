@@ -41,7 +41,7 @@ namespace FuelCalculator
 
         private void maxFuelInput_ValueChanged(object sender, EventArgs e)
         {
-            this.calc.maxFuel = (int)this.maxFuelInput.Value;
+            this.calc.maxFuel = (double)this.maxFuelInput.Value;
         }
 
         private void usageInput_ValueChanged(object sender, EventArgs e)
@@ -71,13 +71,13 @@ namespace FuelCalculator
             if (!calc.doFuelCalc()) return;
 
             this.pitStopsDisplay.Text = calc.numStops.ToString();
-            this.lastStopFuelDisplay.Text = calc.lastStopFuel.ToString();
-            this.totalFuelDisplay.Text = calc.totalFuel.ToString();
+            this.lastStopFuelDisplay.Text = calc.lastStopFuel.ToString("0.00");
+            this.totalFuelDisplay.Text = calc.totalFuel.ToString("0.00");
             this.lapsPerTankDisplay.Text = calc.lapsPerTank.ToString();
 
             if(this.lapRaceCheckbox.Checked)
             {
-                this.totalLapsDisplay.Text = "Race Time";
+                this.totalLapsLabel.Text = "Race Time";
                 this.totalLapsDisplay.Text = calc.raceTime.ToString();
             }
             else
