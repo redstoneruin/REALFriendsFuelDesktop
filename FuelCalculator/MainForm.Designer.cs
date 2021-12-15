@@ -307,7 +307,7 @@
             this.Controls.Add(this.lapTimeLabel);
             this.Controls.Add(this.raceTimeLabel);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "REAL Friends Fuel";
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).EndInit();
