@@ -66,6 +66,13 @@ namespace FuelCalculator
             }
         }
 
+        private void extraLapsSlider_ValueChanged(object sender, EventArgs e)
+        {
+            calc.extraLaps = this.extraLapsSlider.Value / 10.0;
+
+            this.extraLapsLabel.Text = "Extra Laps: " + calc.extraLaps.ToString("0.0");
+        }
+
         private void goButton_Click(object sender, EventArgs e)
         {
             if (!calc.doFuelCalc()) return;
@@ -88,5 +95,6 @@ namespace FuelCalculator
             
         }
 
+        
     }
 }

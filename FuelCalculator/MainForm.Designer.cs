@@ -160,18 +160,21 @@
             // extraLapsSlider
             // 
             this.extraLapsSlider.Location = new System.Drawing.Point(16, 254);
+            this.extraLapsSlider.Maximum = 100;
             this.extraLapsSlider.Name = "extraLapsSlider";
             this.extraLapsSlider.Size = new System.Drawing.Size(218, 45);
             this.extraLapsSlider.TabIndex = 13;
+            this.extraLapsSlider.TickFrequency = 10;
+            this.extraLapsSlider.ValueChanged += new System.EventHandler(this.extraLapsSlider_ValueChanged);
             // 
             // extraLapsLabel
             // 
             this.extraLapsLabel.AutoSize = true;
             this.extraLapsLabel.Location = new System.Drawing.Point(13, 238);
             this.extraLapsLabel.Name = "extraLapsLabel";
-            this.extraLapsLabel.Size = new System.Drawing.Size(57, 13);
+            this.extraLapsLabel.Size = new System.Drawing.Size(78, 13);
             this.extraLapsLabel.TabIndex = 14;
-            this.extraLapsLabel.Text = "Extra Laps";
+            this.extraLapsLabel.Text = "Extra Laps: 0.0";
             // 
             // goButton
             // 
