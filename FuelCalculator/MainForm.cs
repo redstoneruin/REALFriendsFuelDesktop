@@ -27,5 +27,6 @@ namespace FuelCalculator
         {
             calc.doFuelCalc();
         }
+
     }
 }

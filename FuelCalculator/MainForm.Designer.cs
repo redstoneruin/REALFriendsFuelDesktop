@@ -37,10 +37,20 @@
             this.maxFuelInput = new System.Windows.Forms.NumericUpDown();
             this.usageInput = new System.Windows.Forms.NumericUpDown();
             this.lapRaceCheckbox = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.paceLapDropdown = new System.Windows.Forms.ComboBox();
             this.extraLapsSlider = new System.Windows.Forms.TrackBar();
             this.extraLapsLabel = new System.Windows.Forms.Label();
             this.goButton = new System.Windows.Forms.Button();
+            this.pitStopsLabel = new System.Windows.Forms.Label();
+            this.lastStopFuelLabel = new System.Windows.Forms.Label();
+            this.totalFuelLabel = new System.Windows.Forms.Label();
+            this.lapsPerTankLabel = new System.Windows.Forms.Label();
+            this.totalLapsLabel = new System.Windows.Forms.Label();
+            this.pitStopsDisplay = new System.Windows.Forms.Label();
+            this.lastStopFuelDisplay = new System.Windows.Forms.Label();
+            this.totalFuelDisplay = new System.Windows.Forms.Label();
+            this.lapsPerTankDisplay = new System.Windows.Forms.Label();
+            this.totalLapsDisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).BeginInit();
@@ -129,17 +139,18 @@
             this.lapRaceCheckbox.Text = "Lap Race";
             this.lapRaceCheckbox.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // paceLapDropdown
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.paceLapDropdown.FormattingEnabled = true;
+            this.paceLapDropdown.Items.AddRange(new object[] {
             "No Pace Lap",
             "Half Pace Lap",
             "Full Pace Lap"});
-            this.comboBox1.Location = new System.Drawing.Point(16, 205);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(218, 21);
-            this.comboBox1.TabIndex = 12;
+            this.paceLapDropdown.Location = new System.Drawing.Point(16, 204);
+            this.paceLapDropdown.Name = "paceLapDropdown";
+            this.paceLapDropdown.Size = new System.Drawing.Size(218, 21);
+            this.paceLapDropdown.TabIndex = 12;
+            this.paceLapDropdown.Text = "No Pace Lap";
             // 
             // extraLapsSlider
             // 
@@ -166,15 +177,120 @@
             this.goButton.Text = "Go";
             this.goButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // pitStopsLabel
+            // 
+            this.pitStopsLabel.AutoSize = true;
+            this.pitStopsLabel.Location = new System.Drawing.Point(291, 37);
+            this.pitStopsLabel.Name = "pitStopsLabel";
+            this.pitStopsLabel.Size = new System.Drawing.Size(49, 13);
+            this.pitStopsLabel.TabIndex = 16;
+            this.pitStopsLabel.Text = "Pit Stops";
+            // 
+            // lastStopFuelLabel
+            // 
+            this.lastStopFuelLabel.AutoSize = true;
+            this.lastStopFuelLabel.Location = new System.Drawing.Point(291, 79);
+            this.lastStopFuelLabel.Name = "lastStopFuelLabel";
+            this.lastStopFuelLabel.Size = new System.Drawing.Size(90, 13);
+            this.lastStopFuelLabel.TabIndex = 17;
+            this.lastStopFuelLabel.Text = "Fuel on Last Stop";
+            // 
+            // totalFuelLabel
+            // 
+            this.totalFuelLabel.AutoSize = true;
+            this.totalFuelLabel.Location = new System.Drawing.Point(291, 125);
+            this.totalFuelLabel.Name = "totalFuelLabel";
+            this.totalFuelLabel.Size = new System.Drawing.Size(88, 13);
+            this.totalFuelLabel.TabIndex = 18;
+            this.totalFuelLabel.Text = "Total Fuel Usage";
+            // 
+            // lapsPerTankLabel
+            // 
+            this.lapsPerTankLabel.AutoSize = true;
+            this.lapsPerTankLabel.Location = new System.Drawing.Point(291, 168);
+            this.lapsPerTankLabel.Name = "lapsPerTankLabel";
+            this.lapsPerTankLabel.Size = new System.Drawing.Size(77, 13);
+            this.lapsPerTankLabel.TabIndex = 19;
+            this.lapsPerTankLabel.Text = "Laps Per Tank";
+            // 
+            // totalLapsLabel
+            // 
+            this.totalLapsLabel.AutoSize = true;
+            this.totalLapsLabel.Location = new System.Drawing.Point(291, 212);
+            this.totalLapsLabel.Name = "totalLapsLabel";
+            this.totalLapsLabel.Size = new System.Drawing.Size(57, 13);
+            this.totalLapsLabel.TabIndex = 20;
+            this.totalLapsLabel.Text = "Total Laps";
+            // 
+            // pitStopsDisplay
+            // 
+            this.pitStopsDisplay.AutoSize = true;
+            this.pitStopsDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pitStopsDisplay.Location = new System.Drawing.Point(409, 28);
+            this.pitStopsDisplay.Name = "pitStopsDisplay";
+            this.pitStopsDisplay.Size = new System.Drawing.Size(33, 25);
+            this.pitStopsDisplay.TabIndex = 21;
+            this.pitStopsDisplay.Text = "...";
+            // 
+            // lastStopFuelDisplay
+            // 
+            this.lastStopFuelDisplay.AutoSize = true;
+            this.lastStopFuelDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastStopFuelDisplay.Location = new System.Drawing.Point(409, 70);
+            this.lastStopFuelDisplay.Name = "lastStopFuelDisplay";
+            this.lastStopFuelDisplay.Size = new System.Drawing.Size(33, 25);
+            this.lastStopFuelDisplay.TabIndex = 22;
+            this.lastStopFuelDisplay.Text = "...";
+            // 
+            // totalFuelDisplay
+            // 
+            this.totalFuelDisplay.AutoSize = true;
+            this.totalFuelDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalFuelDisplay.Location = new System.Drawing.Point(409, 116);
+            this.totalFuelDisplay.Name = "totalFuelDisplay";
+            this.totalFuelDisplay.Size = new System.Drawing.Size(33, 25);
+            this.totalFuelDisplay.TabIndex = 23;
+            this.totalFuelDisplay.Text = "...";
+            // 
+            // lapsPerTankDisplay
+            // 
+            this.lapsPerTankDisplay.AutoSize = true;
+            this.lapsPerTankDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lapsPerTankDisplay.Location = new System.Drawing.Point(409, 159);
+            this.lapsPerTankDisplay.Name = "lapsPerTankDisplay";
+            this.lapsPerTankDisplay.Size = new System.Drawing.Size(33, 25);
+            this.lapsPerTankDisplay.TabIndex = 24;
+            this.lapsPerTankDisplay.Text = "...";
+            // 
+            // totalLapsDisplay
+            // 
+            this.totalLapsDisplay.AutoSize = true;
+            this.totalLapsDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLapsDisplay.Location = new System.Drawing.Point(409, 203);
+            this.totalLapsDisplay.Name = "totalLapsDisplay";
+            this.totalLapsDisplay.Size = new System.Drawing.Size(33, 25);
+            this.totalLapsDisplay.TabIndex = 25;
+            this.totalLapsDisplay.Text = "...";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 400);
+            this.ClientSize = new System.Drawing.Size(495, 392);
+            this.Controls.Add(this.totalLapsDisplay);
+            this.Controls.Add(this.lapsPerTankDisplay);
+            this.Controls.Add(this.totalFuelDisplay);
+            this.Controls.Add(this.lastStopFuelDisplay);
+            this.Controls.Add(this.pitStopsDisplay);
+            this.Controls.Add(this.totalLapsLabel);
+            this.Controls.Add(this.lapsPerTankLabel);
+            this.Controls.Add(this.totalFuelLabel);
+            this.Controls.Add(this.lastStopFuelLabel);
+            this.Controls.Add(this.pitStopsLabel);
             this.Controls.Add(this.goButton);
             this.Controls.Add(this.extraLapsLabel);
             this.Controls.Add(this.extraLapsSlider);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.paceLapDropdown);
             this.Controls.Add(this.lapRaceCheckbox);
             this.Controls.Add(this.usageInput);
             this.Controls.Add(this.maxFuelInput);
@@ -184,7 +300,7 @@
             this.Controls.Add(this.lapTimeInput);
             this.Controls.Add(this.lapTimeLabel);
             this.Controls.Add(this.raceTimeLabel);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).EndInit();
@@ -205,10 +321,20 @@
         private System.Windows.Forms.NumericUpDown maxFuelInput;
         private System.Windows.Forms.NumericUpDown usageInput;
         private System.Windows.Forms.CheckBox lapRaceCheckbox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox paceLapDropdown;
         private System.Windows.Forms.TrackBar extraLapsSlider;
         private System.Windows.Forms.Label extraLapsLabel;
         private System.Windows.Forms.Button goButton;
+        private System.Windows.Forms.Label pitStopsLabel;
+        private System.Windows.Forms.Label lastStopFuelLabel;
+        private System.Windows.Forms.Label totalFuelLabel;
+        private System.Windows.Forms.Label lapsPerTankLabel;
+        private System.Windows.Forms.Label totalLapsLabel;
+        private System.Windows.Forms.Label pitStopsDisplay;
+        private System.Windows.Forms.Label lastStopFuelDisplay;
+        private System.Windows.Forms.Label totalFuelDisplay;
+        private System.Windows.Forms.Label lapsPerTankDisplay;
+        private System.Windows.Forms.Label totalLapsDisplay;
     }
 }
 
