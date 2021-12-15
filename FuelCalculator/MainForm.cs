@@ -80,7 +80,7 @@ namespace FuelCalculator
             this.pitStopsDisplay.Text = calc.numStops.ToString();
             this.lastStopFuelDisplay.Text = calc.lastStopFuel.ToString("0.00");
             this.totalFuelDisplay.Text = calc.totalFuel.ToString("0.00");
-            this.lapsPerTankDisplay.Text = calc.lapsPerTank.ToString();
+            this.lapsPerTankDisplay.Text = Math.Floor(calc.lapsPerTank).ToString();
 
             if(this.lapRaceCheckbox.Checked)
             {
