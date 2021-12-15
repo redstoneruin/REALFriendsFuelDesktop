@@ -1,4 +1,5 @@
 .vs/
 FuelCalculator/obj/
 FuelCalculator/bin/
+packages/
 *.pfx
