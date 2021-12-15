@@ -81,6 +81,7 @@
             this.lapTimeInput.Name = "lapTimeInput";
             this.lapTimeInput.Size = new System.Drawing.Size(218, 20);
             this.lapTimeInput.TabIndex = 3;
+            this.lapTimeInput.TextChanged += new System.EventHandler(this.lapTimeInput_TextChanged);
             // 
             // maxFuelLabel
             // 
@@ -120,6 +121,7 @@
             this.maxFuelInput.Name = "maxFuelInput";
             this.maxFuelInput.Size = new System.Drawing.Size(218, 20);
             this.maxFuelInput.TabIndex = 9;
+            this.maxFuelInput.ValueChanged += new System.EventHandler(this.maxFuelInput_ValueChanged);
             // 
             // usageInput
             // 
@@ -128,6 +130,7 @@
             this.usageInput.Name = "usageInput";
             this.usageInput.Size = new System.Drawing.Size(218, 20);
             this.usageInput.TabIndex = 10;
+            this.usageInput.ValueChanged += new System.EventHandler(this.usageInput_ValueChanged);
             // 
             // lapRaceCheckbox
             // 
@@ -138,6 +141,7 @@
             this.lapRaceCheckbox.TabIndex = 11;
             this.lapRaceCheckbox.Text = "Lap Race";
             this.lapRaceCheckbox.UseVisualStyleBackColor = true;
+            this.lapRaceCheckbox.CheckedChanged += new System.EventHandler(this.lapRaceCheckbox_CheckedChanged);
             // 
             // paceLapDropdown
             // 
@@ -151,6 +155,7 @@
             this.paceLapDropdown.Size = new System.Drawing.Size(218, 21);
             this.paceLapDropdown.TabIndex = 12;
             this.paceLapDropdown.Text = "No Pace Lap";
+            this.paceLapDropdown.SelectedIndexChanged += new System.EventHandler(this.paceLapDropdown_SelectedIndexChanged);
             // 
             // extraLapsSlider
             // 
@@ -176,6 +181,7 @@
             this.goButton.TabIndex = 15;
             this.goButton.Text = "Go";
             this.goButton.UseVisualStyleBackColor = true;
+            this.goButton.Click += new System.EventHandler(this.goButton_Click);
             // 
             // pitStopsLabel
             // 
