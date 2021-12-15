@@ -14,9 +14,10 @@ namespace FuelCalculator
         [STAThread]
         static void Main()
         {
+            Calculator c = new Calculator();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm(ref c));
         }
     }
 }
