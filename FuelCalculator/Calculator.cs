@@ -18,6 +18,11 @@ namespace FuelCalculator
         public double lapsPerTank = 0, totalFuel = 0, lastStopFuel = 0;
 
 
+        /**
+         * Parses and stores a lap time string to time in seconds
+         * @param lapTimeStr Lap time in format MM:SS.ms
+         * @return Whether the lap time was valid
+         */
         public bool setLapTime(string lapTimeStr)
         {
             MatchCollection mc = Regex.Matches(lapTimeStr, @"((\d|\d\d):)?((\d|\d\d).(\d|\d\d|\d\d\d))");
@@ -26,13 +31,31 @@ namespace FuelCalculator
                 return false;
             }
 
-            string mins = mc[0].Groups[2].Value;
-            string secs = mc[0].Groups[4].Value;
-            string ms = mc[0].Groups[5].Value;
-            
+            double mins, secs, tenths;
+
+            string minsStr = mc[0].Groups[2].Value;
+            string secsStr = mc[0].Groups[4].Value;
+            string tenthsStr = mc[0].Groups[5].Value;
+
+            // ensure all exist
+            if (!double.TryParse(minsStr, out mins)) mins = 0;
+            if (!double.TryParse(secsStr, out secs)) secs = 0;
+
+            if (!double.TryParse(tenthsStr, out tenths)) tenths = 0;
+            else tenths /= 10 * tenthsStr.Length;
+
+            lapTime = mins*60 + secs + tenths;
+
+            Debug.WriteLine(lapTime);
+
             return true;
         }
 
+
+        /**
+         * If all values are available, calculate fuel requirements
+         * @return Whether the inputs are valid and the calculation is complete
+         */
         public bool doFuelCalc()
         {
             if (!inputsValid()) return false;
