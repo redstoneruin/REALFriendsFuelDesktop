@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.raceTimeLabel = new System.Windows.Forms.Label();
             this.lapTimeLabel = new System.Windows.Forms.Label();
             this.lapTimeInput = new System.Windows.Forms.TextBox();
@@ -309,6 +310,7 @@
             this.Controls.Add(this.lapTimeInput);
             this.Controls.Add(this.lapTimeLabel);
             this.Controls.Add(this.raceTimeLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "REAL Friends Fuel";
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).EndInit();
