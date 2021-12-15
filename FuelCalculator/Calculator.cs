@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace FuelCalculator
 {
@@ -15,6 +17,21 @@ namespace FuelCalculator
         public int numStops = 0;
         public double lapsPerTank = 0, totalFuel = 0, lastStopFuel = 0;
 
+
+        public bool setLapTime(string lapTimeStr)
+        {
+            MatchCollection mc = Regex.Matches(lapTimeStr, @"((\d|\d\d):)?((\d|\d\d).(\d|\d\d|\d\d\d))");
+            if(mc.Count == 0)
+            {
+                return false;
+            }
+
+            string mins = mc[0].Groups[2].Value;
+            string secs = mc[0].Groups[4].Value;
+            string ms = mc[0].Groups[5].Value;
+            
+            return true;
+        }
 
         public bool doFuelCalc()
         {

@@ -36,7 +36,7 @@ namespace FuelCalculator
 
         private void lapTimeInput_TextChanged(object sender, EventArgs e)
         {
-            string lapTimeString = this.lapTimeInput.Text;
+            calc.setLapTime(this.lapTimeInput.Text);
         }
 
         private void maxFuelInput_ValueChanged(object sender, EventArgs e)
