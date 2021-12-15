@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace FuelCalculator
 {
@@ -19,11 +20,12 @@ namespace FuelCalculator
         {
             InitializeComponent();
             this.calc = calc;
+            this.raceTimeLabel.Text = "test";
         }
-
+        
         private void raceTimeInput_ValueChanged(object sender, EventArgs e)
         {
-
+            calc.doFuelCalc();
         }
     }
 }
