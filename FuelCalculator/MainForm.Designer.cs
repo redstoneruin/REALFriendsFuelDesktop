@@ -52,6 +52,7 @@
             this.totalFuelDisplay = new System.Windows.Forms.Label();
             this.lapsPerTankDisplay = new System.Windows.Forms.Label();
             this.totalLapsDisplay = new System.Windows.Forms.Label();
+            this.telemDisplay = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).BeginInit();
@@ -282,11 +283,20 @@
             this.totalLapsDisplay.TabIndex = 25;
             this.totalLapsDisplay.Text = "...";
             // 
+            // telemDisplay
+            // 
+            this.telemDisplay.Location = new System.Drawing.Point(482, 13);
+            this.telemDisplay.Multiline = true;
+            this.telemDisplay.Name = "telemDisplay";
+            this.telemDisplay.Size = new System.Drawing.Size(383, 309);
+            this.telemDisplay.TabIndex = 26;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 392);
+            this.ClientSize = new System.Drawing.Size(877, 392);
+            this.Controls.Add(this.telemDisplay);
             this.Controls.Add(this.totalLapsDisplay);
             this.Controls.Add(this.lapsPerTankDisplay);
             this.Controls.Add(this.totalFuelDisplay);
@@ -346,6 +356,7 @@
         private System.Windows.Forms.Label totalFuelDisplay;
         private System.Windows.Forms.Label lapsPerTankDisplay;
         private System.Windows.Forms.Label totalLapsDisplay;
+        private System.Windows.Forms.TextBox telemDisplay;
     }
 }
 
