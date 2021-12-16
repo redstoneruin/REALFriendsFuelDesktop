@@ -19,7 +19,7 @@ namespace FuelCalculator
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(ref c));
+            Application.Run(new MainForm(ref c, ref tm));
         }
     }
 }

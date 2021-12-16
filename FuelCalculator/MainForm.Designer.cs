@@ -285,9 +285,11 @@
             // 
             // telemDisplay
             // 
+            this.telemDisplay.AcceptsReturn = true;
             this.telemDisplay.Location = new System.Drawing.Point(482, 13);
             this.telemDisplay.Multiline = true;
             this.telemDisplay.Name = "telemDisplay";
+            this.telemDisplay.ReadOnly = true;
             this.telemDisplay.Size = new System.Drawing.Size(383, 309);
             this.telemDisplay.TabIndex = 26;
             // 
@@ -323,6 +325,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "REAL Friends Fuel";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).EndInit();

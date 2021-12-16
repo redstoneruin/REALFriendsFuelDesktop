@@ -15,11 +15,21 @@ namespace FuelCalculator
     {
 
         private Calculator calc;
+        private TelemManager tm;
 
-        public MainForm(ref Calculator calc)
+        public MainForm(ref Calculator calc, ref TelemManager tm)
         {
             InitializeComponent();
             this.calc = calc;
+            this.tm = tm;
+        }
+
+        /**
+         * Print a line to the telemetry box
+         */
+        public void printTelem(string message)
+        {
+            this.telemDisplay.Text += message + "\n";
         }
         
         private void raceTimeInput_ValueChanged(object sender, EventArgs e)
@@ -95,6 +105,10 @@ namespace FuelCalculator
             
         }
 
-        
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            tm.startTelem(ref this.telemDisplay);
+
+        }
     }
 }
