@@ -14,6 +14,8 @@ namespace FuelCalculator
 
     public class TelemManager
     {
+        private const double gallonRatio = 0.2641729;
+
         private Thread telemTrd;
         private TextBox telemDisplay;
 
@@ -21,14 +23,15 @@ namespace FuelCalculator
         private iRacingEvents events;
 
         private DateTime time;
+        
+        private int currentLap = 0;
+        private double lastLapFuel = 0;
 
-        double lastLapFuel = 0;
-        int currentLap = 0;
-
-        double fuelUsage = 0;
-        double maxFuel = 0;
-
-        string lapTimeString;
+        public double fuelUsage { get; set; } = 0;
+        public double maxFuel { get; set; } = 0;
+        public string lapTimeString { get; set; }
+        public bool gallons { get; set; } = true;
+        public bool dataValid { get; set; } = false;
 
         public TelemManager()
         {
@@ -83,8 +86,15 @@ namespace FuelCalculator
                                 TimeSpan lapTimeSpan = DateTime.Now - time;
 
                                 this.lapTimeString = String.Format("{0}:{1}.{2}", lapTimeSpan.Minutes, lapTimeSpan.Seconds, lapTimeSpan.Milliseconds);
+
+                                if(this.gallons)
+                                {
+                                    this.fuelUsage *= gallonRatio;
+                                    this.maxFuel *= gallonRatio;
+                                }
                                 
                                 printLine(String.Format("Max fuel: {0}, Last lap fuel: {1}, lap time: {2}", this.maxFuel, this.fuelUsage, this.lapTimeString));
+                                this.dataValid = true;
                                 
                             }
 
@@ -123,6 +133,7 @@ namespace FuelCalculator
 
         private void iracingDisconnected()
         {
+            this.dataValid = false;
             printLine("Telemetry disconnected");
         }
     }
