@@ -16,6 +16,14 @@ namespace FuelCalculator
         private Thread telemTrd;
         private TextBox telemDisplay;
 
+        private iRacingConnection iracing;
+        private iRacingEvents events;
+
+        double lastLapFuel = 0;
+        int currentLap = 0;
+
+        double fuelUsage = 0, lapTime = 0;
+
         public TelemManager()
         {
             telemTrd = new Thread(new ThreadStart(this.telemLoop));
@@ -35,9 +43,17 @@ namespace FuelCalculator
         private void telemLoop()
         {
             // begin listening for live iracing telem connection
-            iRacingConnection iracing = new iRacingConnection();
-            iRacingEvents events = new iRacingEvents();
+            iracing = new iRacingConnection();
+            events = new iRacingEvents();
+
+            events.Connected += iracingConnected;
+            events.Disconnected += iracingDisconnected;
+
             events.StartListening();
+
+            printLine("Attempting to connect...");
+
+            
 
             try
             {
@@ -45,9 +61,24 @@ namespace FuelCalculator
 
                 foreach (DataSample d in iRacing.GetDataFeed())
                 {
-                    if (i % 600 == 0)
+                    if (i % 600 == 0 && d.IsConnected)
                     {
-                        //printLine(string.Format("Data Stream IsConnected = {0}", d.IsConnected));
+                        Telemetry t = d.Telemetry;
+                        // do calculation every lap
+                        if(this.currentLap != t.Lap)
+                        {
+                            this.currentLap = t.Lap;
+
+                            // calculate fuel used this lap
+                            if(this.lastLapFuel != 0)
+                            {
+                                this.fuelUsage = this.lastLapFuel - t.FuelLevel;
+                                printLine(String.Format("Last lap fuel: {0}", this.fuelUsage));
+                            }
+
+                            this.lastLapFuel = t.FuelLevel;
+                        }
+                        //Debug.WriteLine(d.Telemetry.ToString());
                     }
                 }
             }
@@ -68,6 +99,17 @@ namespace FuelCalculator
                     telemDisplay.AppendText(message);
                     telemDisplay.AppendText(Environment.NewLine);
                 });
+        }
+
+
+        private void iracingConnected()
+        {
+            printLine("Telemetry connected");
+        }
+
+        private void iracingDisconnected()
+        {
+            printLine("Telemetry disconnected");
         }
     }
 }
