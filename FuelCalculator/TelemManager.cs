@@ -7,6 +7,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 using iRacingSDK;
+using iRacingSDK.Support;
 
 namespace FuelCalculator
 {
@@ -19,10 +20,15 @@ namespace FuelCalculator
         private iRacingConnection iracing;
         private iRacingEvents events;
 
+        private DateTime time;
+
         double lastLapFuel = 0;
         int currentLap = 0;
 
-        double fuelUsage = 0, lapTime = 0;
+        double fuelUsage = 0;
+        double maxFuel = 0;
+
+        string lapTimeString;
 
         public TelemManager()
         {
@@ -67,18 +73,26 @@ namespace FuelCalculator
                         // do calculation every lap
                         if(this.currentLap != t.Lap)
                         {
+                            this.maxFuel = d.SessionData.DriverInfo.DriverCarFuelMaxLtr;
                             this.currentLap = t.Lap;
 
                             // calculate fuel used this lap
-                            if(this.lastLapFuel != 0)
+                            if(this.lastLapFuel != 0 && this.lastLapFuel - t.FuelLevel > 0)
                             {
                                 this.fuelUsage = this.lastLapFuel - t.FuelLevel;
-                                printLine(String.Format("Last lap fuel: {0}", this.fuelUsage));
+                                TimeSpan lapTimeSpan = DateTime.Now - time;
+
+                                this.lapTimeString = String.Format("{0}:{1}.{2}", lapTimeSpan.Minutes, lapTimeSpan.Seconds, lapTimeSpan.Milliseconds);
+                                
+                                printLine(String.Format("Max fuel: {0}, Last lap fuel: {1}, lap time: {2}", this.maxFuel, this.fuelUsage, this.lapTimeString));
+                                
                             }
 
                             this.lastLapFuel = t.FuelLevel;
+
+                            time = DateTime.Now;
                         }
-                        //Debug.WriteLine(d.Telemetry.ToString());
+                        //Debug.WriteLine(t.ToString());
                     }
                 }
             }
