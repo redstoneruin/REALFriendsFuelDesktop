@@ -309,7 +309,7 @@
             this.gallonsCheckbox.AutoSize = true;
             this.gallonsCheckbox.Checked = true;
             this.gallonsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.gallonsCheckbox.Location = new System.Drawing.Point(792, 350);
+            this.gallonsCheckbox.Location = new System.Drawing.Point(804, 350);
             this.gallonsCheckbox.Name = "gallonsCheckbox";
             this.gallonsCheckbox.Size = new System.Drawing.Size(61, 17);
             this.gallonsCheckbox.TabIndex = 28;
