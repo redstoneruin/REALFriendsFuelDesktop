@@ -303,6 +303,7 @@
             this.useLastLapButton.TabIndex = 27;
             this.useLastLapButton.Text = "Use Last Lap Data";
             this.useLastLapButton.UseVisualStyleBackColor = true;
+            this.useLastLapButton.Click += new System.EventHandler(this.useLastLapButton_Click);
             // 
             // gallonsCheckbox
             // 

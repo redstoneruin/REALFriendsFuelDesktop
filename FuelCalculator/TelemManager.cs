@@ -77,6 +77,8 @@ namespace FuelCalculator
                         if(this.currentLap != t.Lap)
                         {
                             this.maxFuel = d.SessionData.DriverInfo.DriverCarFuelMaxLtr;
+                            if (this.gallons) maxFuel *= gallonRatio;
+
                             this.currentLap = t.Lap;
 
                             // calculate fuel used this lap
@@ -90,7 +92,6 @@ namespace FuelCalculator
                                 if(this.gallons)
                                 {
                                     this.fuelUsage *= gallonRatio;
-                                    this.maxFuel *= gallonRatio;
                                 }
                                 
                                 printLine(String.Format("Max fuel: {0}, Last lap fuel: {1}, lap time: {2}", this.maxFuel, this.fuelUsage, this.lapTimeString));

@@ -110,5 +110,18 @@ namespace FuelCalculator
             tm.startTelem(ref this.telemDisplay);
 
         }
+
+        private void useLastLapButton_Click(object sender, EventArgs e)
+        {
+            if(!tm.dataValid)
+            {
+                this.telemDisplay.AppendText("No valid lap data available");
+                this.telemDisplay.AppendText(Environment.NewLine);
+                return;
+            }
+            this.usageInput.Value = (decimal)(tm.fuelUsage);
+            this.maxFuelInput.Value = (decimal)(tm.maxFuel);
+            this.lapTimeInput.Text = tm.lapTimeString;
+        }
     }
 }
