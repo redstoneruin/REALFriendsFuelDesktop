@@ -53,6 +53,8 @@
             this.lapsPerTankDisplay = new System.Windows.Forms.Label();
             this.totalLapsDisplay = new System.Windows.Forms.Label();
             this.telemDisplay = new System.Windows.Forms.TextBox();
+            this.useLastLapButton = new System.Windows.Forms.Button();
+            this.gallonsCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).BeginInit();
@@ -293,11 +295,34 @@
             this.telemDisplay.Size = new System.Drawing.Size(383, 309);
             this.telemDisplay.TabIndex = 26;
             // 
+            // useLastLapButton
+            // 
+            this.useLastLapButton.Location = new System.Drawing.Point(482, 346);
+            this.useLastLapButton.Name = "useLastLapButton";
+            this.useLastLapButton.Size = new System.Drawing.Size(127, 23);
+            this.useLastLapButton.TabIndex = 27;
+            this.useLastLapButton.Text = "Use Last Lap Data";
+            this.useLastLapButton.UseVisualStyleBackColor = true;
+            // 
+            // gallonsCheckbox
+            // 
+            this.gallonsCheckbox.AutoSize = true;
+            this.gallonsCheckbox.Checked = true;
+            this.gallonsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.gallonsCheckbox.Location = new System.Drawing.Point(792, 350);
+            this.gallonsCheckbox.Name = "gallonsCheckbox";
+            this.gallonsCheckbox.Size = new System.Drawing.Size(61, 17);
+            this.gallonsCheckbox.TabIndex = 28;
+            this.gallonsCheckbox.Text = "Gallons";
+            this.gallonsCheckbox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 392);
+            this.Controls.Add(this.gallonsCheckbox);
+            this.Controls.Add(this.useLastLapButton);
             this.Controls.Add(this.telemDisplay);
             this.Controls.Add(this.totalLapsDisplay);
             this.Controls.Add(this.lapsPerTankDisplay);
@@ -360,6 +385,8 @@
         private System.Windows.Forms.Label lapsPerTankDisplay;
         private System.Windows.Forms.Label totalLapsDisplay;
         private System.Windows.Forms.TextBox telemDisplay;
+        private System.Windows.Forms.Button useLastLapButton;
+        private System.Windows.Forms.CheckBox gallonsCheckbox;
     }
 }
 
