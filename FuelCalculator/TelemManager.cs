@@ -29,25 +29,43 @@ namespace FuelCalculator
             telemTrd.Start();
         }
 
+        /**
+         * The worker loop for iracing telemetry
+         */
         private void telemLoop()
         {
-            // var iRacing = new iRacingConnection();
-            
-            while (true)
-            {
-                // TODO: telemetry processing
+            // begin listening for live iracing telem connection
+            iRacingConnection iracing = new iRacingConnection();
+            iRacingEvents events = new iRacingEvents();
+            events.StartListening();
 
-                // printLine("test");
-                
-                Thread.Sleep(1000);
-            }    
+            try
+            {
+                int i = 0;
+
+                foreach (DataSample d in iRacing.GetDataFeed())
+                {
+                    if (i % 600 == 0)
+                    {
+                        //printLine(string.Format("Data Stream IsConnected = {0}", d.IsConnected));
+                    }
+                }
+            }
+            finally
+            {
+                events.StopListening();
+            }
         }
 
+        /**
+         * Print a line to the display's message box
+         * @param message The message to print
+         */
         private void printLine(string message)
         {
             telemDisplay.Invoke((MethodInvoker) delegate
                 {
-                    telemDisplay.AppendText("test");
+                    telemDisplay.AppendText(message);
                     telemDisplay.AppendText(Environment.NewLine);
                 });
         }
