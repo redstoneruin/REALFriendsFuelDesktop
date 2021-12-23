@@ -53,12 +53,16 @@
             this.lapsPerTankDisplay = new System.Windows.Forms.Label();
             this.totalLapsDisplay = new System.Windows.Forms.Label();
             this.telemDisplay = new System.Windows.Forms.TextBox();
-            this.useLastLapButton = new System.Windows.Forms.Button();
             this.gallonsCheckbox = new System.Windows.Forms.CheckBox();
+            this.grabTimeButton = new System.Windows.Forms.Button();
+            this.grabUsageButton = new System.Windows.Forms.Button();
+            this.lapNumberInput = new System.Windows.Forms.NumericUpDown();
+            this.lapNumberLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.raceTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraLapsSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lapNumberInput)).BeginInit();
             this.SuspendLayout();
             // 
             // raceTimeLabel
@@ -295,16 +299,6 @@
             this.telemDisplay.Size = new System.Drawing.Size(383, 309);
             this.telemDisplay.TabIndex = 26;
             // 
-            // useLastLapButton
-            // 
-            this.useLastLapButton.Location = new System.Drawing.Point(482, 346);
-            this.useLastLapButton.Name = "useLastLapButton";
-            this.useLastLapButton.Size = new System.Drawing.Size(127, 23);
-            this.useLastLapButton.TabIndex = 27;
-            this.useLastLapButton.Text = "Use Last Lap Data";
-            this.useLastLapButton.UseVisualStyleBackColor = true;
-            this.useLastLapButton.Click += new System.EventHandler(this.useLastLapButton_Click);
-            // 
             // gallonsCheckbox
             // 
             this.gallonsCheckbox.AutoSize = true;
@@ -317,13 +311,67 @@
             this.gallonsCheckbox.Text = "Gallons";
             this.gallonsCheckbox.UseVisualStyleBackColor = true;
             // 
+            // grabTimeButton
+            // 
+            this.grabTimeButton.Location = new System.Drawing.Point(482, 346);
+            this.grabTimeButton.Name = "grabTimeButton";
+            this.grabTimeButton.Size = new System.Drawing.Size(75, 23);
+            this.grabTimeButton.TabIndex = 29;
+            this.grabTimeButton.Text = "Grab Time";
+            this.grabTimeButton.UseVisualStyleBackColor = true;
+            this.grabTimeButton.Click += new System.EventHandler(this.grabTimeButton_Click);
+            // 
+            // grabUsageButton
+            // 
+            this.grabUsageButton.Location = new System.Drawing.Point(563, 346);
+            this.grabUsageButton.Name = "grabUsageButton";
+            this.grabUsageButton.Size = new System.Drawing.Size(88, 23);
+            this.grabUsageButton.TabIndex = 30;
+            this.grabUsageButton.Text = "Grab Usage";
+            this.grabUsageButton.UseVisualStyleBackColor = true;
+            this.grabUsageButton.Click += new System.EventHandler(this.grabUsageButton_Click);
+            // 
+            // lapNumberInput
+            // 
+            this.lapNumberInput.Location = new System.Drawing.Point(682, 349);
+            this.lapNumberInput.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.lapNumberInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.lapNumberInput.Name = "lapNumberInput";
+            this.lapNumberInput.Size = new System.Drawing.Size(90, 20);
+            this.lapNumberInput.TabIndex = 31;
+            this.lapNumberInput.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lapNumberLabel
+            // 
+            this.lapNumberLabel.AutoSize = true;
+            this.lapNumberLabel.Location = new System.Drawing.Point(679, 333);
+            this.lapNumberLabel.Name = "lapNumberLabel";
+            this.lapNumberLabel.Size = new System.Drawing.Size(65, 13);
+            this.lapNumberLabel.TabIndex = 32;
+            this.lapNumberLabel.Text = "Lap Number";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 392);
+            this.Controls.Add(this.lapNumberLabel);
+            this.Controls.Add(this.lapNumberInput);
+            this.Controls.Add(this.grabUsageButton);
+            this.Controls.Add(this.grabTimeButton);
             this.Controls.Add(this.gallonsCheckbox);
-            this.Controls.Add(this.useLastLapButton);
             this.Controls.Add(this.telemDisplay);
             this.Controls.Add(this.totalLapsDisplay);
             this.Controls.Add(this.lapsPerTankDisplay);
@@ -356,6 +404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.maxFuelInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usageInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraLapsSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lapNumberInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,8 +435,11 @@
         private System.Windows.Forms.Label lapsPerTankDisplay;
         private System.Windows.Forms.Label totalLapsDisplay;
         private System.Windows.Forms.TextBox telemDisplay;
-        private System.Windows.Forms.Button useLastLapButton;
         private System.Windows.Forms.CheckBox gallonsCheckbox;
+        private System.Windows.Forms.Button grabTimeButton;
+        private System.Windows.Forms.Button grabUsageButton;
+        private System.Windows.Forms.NumericUpDown lapNumberInput;
+        private System.Windows.Forms.Label lapNumberLabel;
     }
 }
 

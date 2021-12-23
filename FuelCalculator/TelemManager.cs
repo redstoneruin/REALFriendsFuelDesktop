@@ -12,6 +12,21 @@ using iRacingSDK.Support;
 namespace FuelCalculator
 {
 
+    /**
+     * Structure for storing 
+     */
+    public struct LapInfo
+    {
+        public LapInfo(double usage, string lapTimeStr)
+        {
+            Usage = usage;
+            LapTimeStr = lapTimeStr;
+        }
+
+        public double Usage { get; }
+        public string LapTimeStr { get; }
+    }
+
     public class TelemManager
     {
         private const double gallonRatio = 0.2641729;
@@ -27,11 +42,11 @@ namespace FuelCalculator
         private int currentLap = 0;
         private double lastLapFuel = 0;
 
-        public double fuelUsage { get; set; } = 0;
+        
+        public List<LapInfo> lapInfos = new List<LapInfo>();
+        
         public double maxFuel { get; set; } = 0;
-        public string lapTimeString { get; set; }
         public bool gallons { get; set; } = true;
-        public bool dataValid { get; set; } = false;
 
         public TelemManager()
         {
@@ -76,6 +91,9 @@ namespace FuelCalculator
                         // do calculation every lap
                         if(this.currentLap != t.Lap)
                         {
+                            double fuelUsage;
+                            string lapTimeStr;
+
                             this.maxFuel = d.SessionData.DriverInfo.DriverCarFuelMaxLtr;
                             if (this.gallons) maxFuel *= gallonRatio;
 
@@ -84,18 +102,19 @@ namespace FuelCalculator
                             // calculate fuel used this lap
                             if(this.lastLapFuel != 0 && this.lastLapFuel - t.FuelLevel > 0)
                             {
-                                this.fuelUsage = this.lastLapFuel - t.FuelLevel;
+                                fuelUsage = this.lastLapFuel - t.FuelLevel;
                                 TimeSpan lapTimeSpan = DateTime.Now - time;
 
-                                this.lapTimeString = String.Format("{0}:{1}.{2}", lapTimeSpan.Minutes, lapTimeSpan.Seconds, lapTimeSpan.Milliseconds);
+                                lapTimeStr = String.Format("{0}:{1}.{2}", lapTimeSpan.Minutes, lapTimeSpan.Seconds, lapTimeSpan.Milliseconds);
 
                                 if(this.gallons)
                                 {
-                                    this.fuelUsage *= gallonRatio;
+                                    fuelUsage *= gallonRatio;
                                 }
+
+                                lapInfos.Add(new LapInfo(fuelUsage, lapTimeStr));
+                                printLine(String.Format("{0} - Last lap fuel: {1}, lap time: {2}", lapInfos.Count, Math.Round(fuelUsage, 3), lapTimeStr));
                                 
-                                printLine(String.Format("Max fuel: {0}, Last lap fuel: {1}, lap time: {2}", this.maxFuel, this.fuelUsage, this.lapTimeString));
-                                this.dataValid = true;
                                 
                             }
 
@@ -134,7 +153,6 @@ namespace FuelCalculator
 
         private void iracingDisconnected()
         {
-            this.dataValid = false;
             printLine("Telemetry disconnected");
         }
     }

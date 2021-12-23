@@ -85,6 +85,7 @@ namespace FuelCalculator
 
         private void goButton_Click(object sender, EventArgs e)
         {
+
             if (!calc.doFuelCalc()) return;
 
             this.pitStopsDisplay.Text = calc.numStops.ToString();
@@ -111,17 +112,30 @@ namespace FuelCalculator
 
         }
 
-        private void useLastLapButton_Click(object sender, EventArgs e)
+        private void grabTimeButton_Click(object sender, EventArgs e)
         {
-            if(!tm.dataValid)
+            int lapNumber = (int)this.lapNumberInput.Value;
+            if(lapNumber > this.tm.lapInfos.Count)
             {
-                this.telemDisplay.AppendText("No valid lap data available");
+                this.telemDisplay.AppendText(String.Format("Lap {0} does not exist", lapNumber));
                 this.telemDisplay.AppendText(Environment.NewLine);
                 return;
             }
-            this.usageInput.Value = (decimal)(tm.fuelUsage);
-            this.maxFuelInput.Value = (decimal)(tm.maxFuel);
-            this.lapTimeInput.Text = tm.lapTimeString;
+
+            this.lapTimeInput.Text = tm.lapInfos[lapNumber-1].LapTimeStr;
+        }
+
+        private void grabUsageButton_Click(object sender, EventArgs e)
+        {
+            int lapNumber = (int)this.lapNumberInput.Value;
+            if(lapNumber > this.tm.lapInfos.Count)
+            {
+                this.telemDisplay.AppendText(String.Format("Lap {0} does not exist", lapNumber));
+                this.telemDisplay.AppendText(Environment.NewLine);
+                return;
+            }
+
+            this.usageInput.Value = (decimal)(tm.lapInfos[lapNumber-1].Usage);
         }
     }
 }
