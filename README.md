@@ -1,5 +1,5 @@
 # REALFriendsFuelDesktop
-Desktop version of realfriendsracing.com/calculator with telemetry logging.
+Desktop version of the [REAL Friend Fuel Calculator](realfriendsracing.com/calculator) website with telemetry logging.
 
 ### Building
 Build with visual studio, relies on the [iRacingSDK.Net](https://github.com/vipoo/iRacingSDK.Net) library.
